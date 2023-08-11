@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+apply from:"../basic.gradle"
+
+
+
+android {
+
+    defaultConfig {
+
+        versionCode 1
+        versionName "1.0"
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    //AndroidX
+    api deps.support.app_compat
+    //recyclerview
+    api deps.support.recyclerview
+    //TabLayout
+    api deps.support.material
+    //分包
+    api deps.support.multidex
+    //状态栏
+    api deps.libs.systembartint
+    //glide
+    api deps.libs.glide
+    //constraintlayout
+    api deps.libs.constraintlayout
+    //litepal
+    api deps.libs.litepal
+    //SmartRefreshLayout
+    api deps.libs.SmartRefreshLayout
+    api deps.libs.SmartRefreshLayoutFooter
+    api deps.libs.SmartRefreshHeader
+    //自定义圆形图片
+    api deps.libs.roundedimageview
+
+
+    //mmkv
+    api deps.libs.mmkv
+    //gson
+    api deps.libs.gson
+    //协程
+    api deps.support.coroutines
+    api deps.support.coroutines_android
+    //Lifecycle
+    api deps.support.lifecycle
+    api deps.support.lifecycle_java8
+
+    //viewmodel
+    api deps.support.viewmodel
+
+
+    //权限框架
+    api 'com.yanzhenjie:permission:1.0.5'
+    //时间日期选择
+    api 'com.github.loperSeven:DateTimePicker:0.5.7'
+
+}

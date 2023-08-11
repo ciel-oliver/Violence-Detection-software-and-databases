@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>添加用户</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../static/css/public.css" media="all">
+    <link rel="stylesheet" href="../static/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label required">登录账号</label>
+        <div class="layui-input-block">
+            <input type="text" name="account" lay-verify="required" lay-reqtext="登录账号不能为空" placeholder="请输入登录账号"
+                   th:value="${user.account}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">密码</label>
+        <div class="layui-input-block">
+            <input type="text" name="password" lay-verify="required" lay-reqtext="密码不能为空" placeholder="请输入密码"
+                   th:value="${user.password}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="required" lay-reqtext="名称不能为空" placeholder="请输入名称"
+                   th:value="${user.name}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">手机</label>
+        <div class="layui-input-block">
+            <input type="text" name="phone" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机"
+                   th:value="${user.phone}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">性别</label>
+        <div class="layui-input-block">
+            <input type="text" name="sex" lay-verify="required" lay-reqtext="性别不能为空" placeholder="请输入性别"
+                   th:value="${user.sex}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="email"   lay-reqtext="邮箱不能为空" placeholder="请输入邮箱"
+                   th:value="${user.email}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">生日</label>
+        <div class="layui-input-block">
+            <input type="text" name="birthday"  lay-reqtext="生日不能为空" placeholder="请选择生日"
+                   th:value="${user.birthday}" class="layui-input" id="birthday"
+            >
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">科室号、志愿者编号</label>
+        <div class="layui-input-block">
+            <input type="text" name="userTypeMsg" lay-verify="required" lay-reqtext="科室号、志愿者编号不能为空" placeholder="请输入科室号、志愿者编号"
+                   th:value="${user.userTypeMsg}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+        </div>
+    </div>
+</div>
+<script src="../static/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../static/lib/jq-module/zyupload/zyupload-1.0.0.min.js" charset="utf-8"></script>
+
+<script th:inline="javascript">
+    layui.use(['upload','dropdown','form',"jquery"], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            upload = layui.upload,
+            $ = layui.$;
+        var laydate = layui.laydate;
+        //常规用法
+        laydate.render({
+            elem: '#birthday'
+        });
+        var dropdown = layui.dropdown
+
+        var userType = [[${user.type}]];
+        var id = [[${user.id}]];
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+
+            var dataStr = JSON.stringify(data.field);
+            var dataSub = JSON.parse(dataStr);
+            dataSub.id = id;
+            dataSub.type = userType;
+            $.ajax({
+                url:"../user/addUser",
+                data:JSON.stringify(dataSub),
+                type:"POST",
+                dataType:"JSON",
+                contentType: "application/json", //必须这样写
+                success:function(data){
+                    if(data.errorId==0){
+                        // 关闭弹出层
+                        layer.msg('保存成功');
+                        var iframeIndex = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(iframeIndex);
+                    }else{
+                        layer.msg(data.errorMsg);
+                    }
+                },
+                error:function(data){
+                    layer.msg("保存失败");
+                }
+            });
+            return false;
+        });
+    });
+
+
+</script>
+</body>
+</html>

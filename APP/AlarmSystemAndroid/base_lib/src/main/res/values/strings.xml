@@ -1,0 +1,18 @@
+<resources>
+    <!-- 修改密码 -->
+    <string name="update_password_ts">为了你的账号安全，修改密码前请输入原密码</string>
+    <string name="update_password_original">请输入原密码</string>
+    <string name="update_password_new">请输入新密码</string>
+    <string name="update_password_new_confirm">请再次输入新密码</string>
+    <string name="update_password_determine">确认修改</string>
+
+
+
+    <string name="app_network_error">网络连接失败</string>
+    <string name="press_again_exit">再按一次退出</string>
+    <!-- 权限 -->
+    <string name="permission_fail_apply">权限申请失败</string>
+    <string name="permission_fail_apply_message">此功能需要定位、文件读取权限，请您到设置页面手动授权，否则功能无法正常使用！</string>
+    <string name="permission_set">设置</string>
+    <string name="permission_fail_apply_message_one">此功能需要相机、文件读取，请您到设置页面手动授权，否则功能无法正常使用！</string>
+</resources>

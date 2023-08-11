@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply from:"../basic.gradle"
+
+
+
+android {
+
+    defaultConfig {
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    //okhttp3
+    api deps.libs.okhttp
+    api deps.libs.okhttp_interceptor
+    //retrofit2
+    api deps.libs.retrofit
+    api deps.libs.retrofit_converter
+
+    implementation project(path: ':base_lib')
+}

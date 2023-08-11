@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chxip.alarmsystem.dao.AlarmMapper">
+  <resultMap id="BaseResultMap" type="com.chxip.alarmsystem.entity.Alarm">
+    <id column="alarm_id" jdbcType="INTEGER" property="alarmId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="alarm_time" jdbcType="VARCHAR" property="alarmTime" />
+    <result column="alarm_address" jdbcType="VARCHAR" property="alarmAddress" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="alarm_status" jdbcType="INTEGER" property="alarmStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="alarm_type" jdbcType="INTEGER" property="alarmType" />
+    <result column="alarm_remark" jdbcType="VARCHAR" property="alarmRemark" />
+    <result column="complete_time" jdbcType="TIMESTAMP" property="completeTime" />
+
+
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.chxip.alarmsystem.entity.Alarm">
+    <result column="alarm_image" jdbcType="LONGVARCHAR" property="alarmImage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    alarm_id, create_time, alarm_time, alarm_address, user_id, alarm_status, update_time,alarm_type,alarm_remark,complete_time
+  </sql>
+  <sql id="Blob_Column_List">
+    alarm_image
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_alarm
+    where alarm_id = #{alarmId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT a.*,u.name as userName FROM t_alarm as a
+    INNER JOIN t_user as u ON a.user_id = u.id
+    <where>
+      <if test="keyWord != null">
+        and (u.`name` like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%')
+        OR a.alarm_address like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%') )
+      </if>
+    </where>
+    ORDER BY a.create_time DESC LIMIT #{page},#{size}
+
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT a.* FROM t_alarm as a
+    WHERE a.alarm_status = #{status}
+ ORDER BY a.create_time DESC
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectByUserId" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT a.*,u.name as userName FROM t_alarm as a
+    INNER JOIN t_user as u ON a.user_id = u.id
+    <where>
+      and alarm_type = #{userId}
+    and alarm_status != 1
+    </where>
+    ORDER BY alarm_status LIMIT #{page},#{size}
+
+  </select>
+
+
+
+
+  <!-- 查询全部-->
+  <select id="selectAllCount" parameterType="java.util.Map" resultType ="java.lang.Integer">
+    SELECT count(a.alarm_id) FROM t_alarm as a
+    INNER JOIN t_user as u ON a.user_id = u.id
+    <where>
+      <if test="keyWord != null">
+        and (u.`name` like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%')
+        OR a.alarm_address like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%') )
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_alarm
+    where alarm_id = #{alarmId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chxip.alarmsystem.entity.Alarm">
+    insert into t_alarm (alarm_id, create_time, alarm_time, 
+      alarm_address, user_id, alarm_status, 
+      update_time, alarm_image)
+    values (#{alarmId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{alarmTime,jdbcType=VARCHAR},
+      #{alarmAddress,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{alarmStatus,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{alarmImage,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chxip.alarmsystem.entity.Alarm">
+    insert into t_alarm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alarmId != null">
+        alarm_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="alarmTime != null">
+        alarm_time,
+      </if>
+      <if test="alarmAddress != null">
+        alarm_address,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="alarmStatus != null">
+        alarm_status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="alarmImage != null">
+        alarm_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alarmId != null">
+        #{alarmId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmTime != null">
+        #{alarmTime,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmAddress != null">
+        #{alarmAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="alarmStatus != null">
+        #{alarmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmImage != null">
+        #{alarmImage,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chxip.alarmsystem.entity.Alarm">
+    update t_alarm
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmTime != null">
+        alarm_time = #{alarmTime,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmAddress != null">
+        alarm_address = #{alarmAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="alarmStatus != null">
+        alarm_status = #{alarmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmImage != null">
+        alarm_image = #{alarmImage,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where alarm_id = #{alarmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.chxip.alarmsystem.entity.Alarm">
+    update t_alarm
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      alarm_time = #{alarmTime,jdbcType=VARCHAR},
+      alarm_address = #{alarmAddress,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      alarm_status = #{alarmStatus,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      alarm_image = #{alarmImage,jdbcType=LONGVARCHAR}
+    where alarm_id = #{alarmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chxip.alarmsystem.entity.Alarm">
+    update t_alarm
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      alarm_time = #{alarmTime,jdbcType=VARCHAR},
+      alarm_address = #{alarmAddress,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      alarm_status = #{alarmStatus,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where alarm_id = #{alarmId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateStateById" parameterType="java.util.Map">
+    update t_alarm
+    set alarm_status = #{state,jdbcType=INTEGER},
+        alarm_remark = #{alarmRemark,jdbcType=VARCHAR},
+        complete_time = now()
+    where alarm_id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateAlarmUserId" parameterType="java.util.Map">
+    update t_alarm
+    set alarm_status = 2,
+     user_id = #{userId,jdbcType=INTEGER}
+    where alarm_id = #{alarmId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+apply from: "../basic.gradle"
+
+
+
+
+android {
+
+    defaultConfig {
+        applicationId "com.ping.alarmsystem"
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+
+    signingConfigs {
+        release {
+            storeFile file("../chxip.jks")
+            keyAlias 'chxip'
+            keyPassword '123456'
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release  // 配置release包的签名
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release // 配置debug包的签名
+        }
+    }
+
+
+
+}
+
+dependencies {
+    api fileTree(dir: "libs", include: ["*.jar", "*.so", "*.aar"])
+    ///基础类库
+    implementation project(path: ':base_lib')
+    implementation project(path: ':network')
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+
+}

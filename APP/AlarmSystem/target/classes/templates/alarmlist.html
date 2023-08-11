@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>报警列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../static/css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键词</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="keyWord" autocomplete="off" placeholder="地址、处理人" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit
+                                    lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+
+               <!-- <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加</button>-->
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="showImage">查看图片</a>
+        </script>
+        <script type="text/html" id="imageListJS">
+            {{#  layui.each(d.imageList, function(index, item){ }}
+                <img style="width: 200px;height: 100px" src="../{{item.imageUrl}}"/>
+            {{#  }); }}
+        </script>
+
+    </div>
+</div>
+<script src="../static/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<style type="text/css">
+
+</style>
+<script>
+    layui.use(['dropdown','form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            element = layui.element
+            table = layui.table;
+
+        var dropdown = layui.dropdown;
+
+
+
+        table.render({
+            elem: '#currentTableId',
+            url: 'getAlarm',
+            toolbar: '#toolbarDemo',
+            cellMinWidth: 80,
+            request:{
+                pageName:'page',
+                limitName: 'size'
+            },
+            cols: [
+                [
+                    {field: 'alarmId', title: 'ID'},
+                    {field: 'createTime',title: '添加时间'},
+                    {field: 'alarmTime', title: '报警时间', sort: false},
+                    {field: 'alarmAddress', title: '报警地址',  sort: false},
+                    {field: 'userName', title: '处理人',  sort: false},
+                    {field: 'userId', title: '处理人Id',  sort: false},
+                    {field: 'completeTime', title: '处理时间',  sort: false},
+                    {field: 'alarmRemark', title: '处理方式',  sort: false},
+                    {field: 'alarmImage', height:100, title: '报警图片', sort: false,templet: function(d){
+                            //得到当前行数据，并拼接成自定义模板
+                            return '<img style="width: 200px;height: 200px" src="data:image/png;base64,'+d.alarmImage+'"/>'
+                        }},
+                    {field: 'alarmType',  title: '报警类型',templet: function(d){
+                            //得到当前行数据，并拼接成自定义模板
+                            //状态 1--未分配 2--救助中 3--已完成
+                            if(d.alarmType == 1){
+                                return '安保报警'
+                            }else if(d.alarmType == 2){
+                                return '医护报警'
+                            }{
+                                return '志愿者报警'
+                            }
+                        }},
+                    {field: 'alarmStatus',  title: '状态',templet: function(d){
+                            //得到当前行数据，并拼接成自定义模板
+                            //状态 1--未分配 2--救助中 3--已完成
+                            if(d.alarmStatus == 1){
+                                return '未分配'
+                            }else if(d.alarmStatus == 2){
+                                return '救助中'
+                            }{
+                                return '已完成'
+                            }
+                        }},
+                    {title: '操作',toolbar: '#currentTableBar', align: "center",fixed:"right"}
+                ]
+            ],
+            response:{
+                statusCode : 0
+            },
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 10,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+            //弹窗
+           /* layer.alert(result, {
+                title: '最终的搜索信息'
+            });*/
+            console.log( JSON.parse(result).keyWord)
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                ,where: {
+                    keyWord: JSON.parse(result).keyWord
+                }
+            });
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  // 监听添加操作
+                var index = layer.open({
+                    title: '添加报警',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['80%', '80%'],
+                    content: '../cookbook/toAddCookbook',
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableId')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            var that = this
+            if(obj.event === 'operation'){
+
+            }
+            if (obj.event === 'showImage') {
+                var index = layer.open({
+                    title: '报警图片',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['80%', '80%'],
+                    content: '../alarm/toShowImageAlarm?alarmId='+data.alarmId,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'unenable') {
+                //删除
+
+            } else if (obj.event === 'update') {
+
+            }
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chxip.alarmsystem.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.chxip.alarmsystem.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="imageUrl" jdbcType="VARCHAR" property="imageurl" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="user_type_msg" jdbcType="VARCHAR" property="userTypeMsg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account, password, type, name, imageUrl, phone, sex, email, state, birthday, 
+    user_type_msg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
+
+  <select id="selectByPassword" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    <where>
+      <if test="username != null">
+        and account = #{username}
+      </if>
+      <if test="password != null">
+        and password = #{password}
+      </if>
+      and state = 1
+    </where>
+  </select>
+
+  <select id="selectByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where phone = #{phone,jdbcType=VARCHAR} AND state = 1
+  </select>
+
+  <select id="selectByPhoneAndAccount"   resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where phone = #{phone,jdbcType=VARCHAR} AND  account = #{account,jdbcType=VARCHAR}
+  </select>
+
+
+  <!-- 查询全部-->
+  <select id="selectAllNoPage" resultMap="BaseResultMap">
+    SELECT * FROM t_user as u where u.state = 1 AND u.type != 0
+    ORDER BY u.id DESC
+
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT * FROM t_user as u
+    <where>
+      <if test="userName != null">
+        and (name like CONCAT('%',#{userName,jdbcType=VARCHAR},'%') AND  type = #{userType})
+      </if>
+      <if test="phone != null">
+        AND (phone like CONCAT('%',#{phone,jdbcType=VARCHAR},'%') AND type = #{userType})
+      </if>
+    </where>
+    ORDER BY u.id DESC LIMIT #{page},#{size}
+
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectAllCount" parameterType="java.util.Map" resultType ="java.lang.Integer">
+    SELECT count(u.id) FROM t_user as u
+    <where>
+      <if test="userName != null">
+        and (name like CONCAT('%',#{userName,jdbcType=VARCHAR},'%') AND  type = #{userType})
+      </if>
+      <if test="phone != null">
+        OR (phone like CONCAT('%',#{phone,jdbcType=VARCHAR},'%') AND type = #{userType})
+      </if>
+    </where>
+  </select>
+
+  <update id="updateStateById" parameterType="java.util.Map">
+    update t_user
+    set state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chxip.alarmsystem.entity.User"  useGeneratedKeys="true" keyProperty="id">
+    insert into t_user (id, account, password, 
+      type, name, imageUrl, 
+      phone, sex, email, 
+      state, birthday, user_type_msg
+      )
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{imageurl,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{birthday,jdbcType=VARCHAR}, #{userTypeMsg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chxip.alarmsystem.entity.User" useGeneratedKeys="true" keyProperty="id">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="imageurl != null">
+        imageUrl,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="userTypeMsg != null">
+        user_type_msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null">
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="userTypeMsg != null">
+        #{userTypeMsg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chxip.alarmsystem.entity.User">
+    update t_user
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null">
+        imageUrl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="userTypeMsg != null">
+        user_type_msg = #{userTypeMsg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chxip.alarmsystem.entity.User">
+    update t_user
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      imageUrl = #{imageurl,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      user_type_msg = #{userTypeMsg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

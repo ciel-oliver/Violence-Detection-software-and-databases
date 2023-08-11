@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1685185185185185" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/buttonshapewhitebg.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/device_item_bg.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/et_search_bg.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_baseline_account_box_6_24.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_email_24dp.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_email_white_24dp.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_lock_white_24dp.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_user_24dp.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ic_user_white_24dp.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ll_click.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/ll_click_border.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/main_pointgroup_selector.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/personal_center_bg.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/round_bg.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/shape_circle_number.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/drawable/weather_bg.xml" value="0.1234375" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/activity_login.xml" value="0.12409420289855072" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/activity_notification.xml" value="0.10144927536231885" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/activity_splash.xml" value="0.10778985507246377" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/activity_update.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/activity_update_password.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/alarm_dialog.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/alarm_new_item.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/home_fragment.xml" value="0.7580645161290323" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/main_view_pager_item.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/my_fragment.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/my_information_pop.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/notification_item.xml" value="0.1" />
+        <entry key="..\:/android/AlarmSystemAndroid/app/src/main/res/layout/set_fragment.xml" value="0.1" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/drawable-v24/buttonshapewhitebg.xml" value="0.24947916666666667" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/drawable-v24/device_item_bg.xml" value="0.2682291666666667" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/drawable/device_item_bg.xml" value="0.2682291666666667" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/layout/activity_main.xml" value="0.2667572463768116" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/layout/device_item.xml" value="0.2520833333333333" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/app/src/main/res/layout/register_view.xml" value="0.23333333333333334" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/module_login/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/bishe/Android/IotMonitor/IotMonitor/module_login/src/main/res/layout/register_view.xml" value="0.20364583333333333" />
+        <entry key="app/src/main/res/drawable/buttonshapewhitebg.xml" value="0.22552083333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_box_6_24.xml" value="0.20185185185185187" />
+        <entry key="app/src/main/res/drawable/ic_email_24dp.xml" value="0.20185185185185187" />
+        <entry key="app/src/main/res/drawable/ic_lock_white_24dp.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/drawable/ic_user_24dp.xml" value="0.20185185185185187" />
+        <entry key="app/src/main/res/drawable/ll_click.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/drawable/ll_click_border.xml" value="0.20572916666666666" />
+        <entry key="app/src/main/res/drawable/round_bg.xml" value="0.2957099080694586" />
+        <entry key="app/src/main/res/drawable/weather_bg.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/activity_add_device.xml" value="0.33067729083665337" />
+        <entry key="app/src/main/res/layout/activity_add_focus.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/activity_add_reserve.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_device_data.xml" value="0.2828125" />
+        <entry key="app/src/main/res/layout/activity_device_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_focus_detail.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/activity_game_details.xml" value="0.2640625" />
+        <entry key="app/src/main/res/layout/activity_game_list.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2828125" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.30696462350373044" />
+        <entry key="app/src/main/res/layout/activity_my.xml" value="0.265625" />
+        <entry key="app/src/main/res/layout/activity_my_collect.xml" value="0.14010416666666667" />
+        <entry key="app/src/main/res/layout/activity_notification.xml" value="0.16979166666666667" />
+        <entry key="app/src/main/res/layout/activity_reserve_record.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/layout/activity_update.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_update_device.xml" value="0.265625" />
+        <entry key="app/src/main/res/layout/activity_update_password.xml" value="0.1921875" />
+        <entry key="app/src/main/res/layout/alarm_new_item.xml" value="0.2859375" />
+        <entry key="app/src/main/res/layout/comment_item.xml" value="0.15416666666666667" />
+        <entry key="app/src/main/res/layout/device_item.xml" value="0.2828125" />
+        <entry key="app/src/main/res/layout/focus_fragment.xml" value="0.17916666666666667" />
+        <entry key="app/src/main/res/layout/focus_item.xml" value="0.17916666666666667" />
+        <entry key="app/src/main/res/layout/game_list_item.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/game_type_item.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/my_fragment.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout/my_information_pop.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/notification_item.xml" value="0.16979166666666667" />
+        <entry key="app/src/main/res/layout/register_view.xml" value="0.2828125" />
+        <entry key="app/src/main/res/layout/reserve_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/set_fragment.xml" value="0.17239583333333333" />
+        <entry key="base_lib/src/main/res/drawable/blue_button.xml" value="0.20462962962962963" />
+        <entry key="base_lib/src/main/res/drawable/button_red.xml" value="0.20462962962962963" />
+        <entry key="base_lib/src/main/res/drawable/normal_shape.xml" value="0.20462962962962963" />
+        <entry key="base_lib/src/main/res/layout/activity_clip_image.xml" value="0.22083333333333333" />
+        <entry key="base_lib/src/main/res/layout/loading_dialog.xml" value="0.1921875" />
+        <entry key="base_lib/src/main/res/layout/title.xml" value="0.20208333333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

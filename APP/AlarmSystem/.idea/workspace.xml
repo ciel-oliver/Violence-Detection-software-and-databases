@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c929065e-2814-4a4b-ba88-5174c7028d99" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26XjSom98UcrvNb1PIesEEnom0C" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="H:/j2ee" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.chxip.alarmsystem.config" />
+      <recent name="com.chxip.alarmsystem.controller" />
+      <recent name="com.chxip.cookbook.controller" />
+      <recent name="com.chxip.cookbook.dao" />
+      <recent name="com.chxip.cookbook.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/images" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/mp4" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/chxip/epidemic/controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AlarmSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="AlarmSystem" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.chxip.alarmsystem.AlarmSystemApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c929065e-2814-4a4b-ba88-5174c7028d99" name="Default Changelist" comment="" />
+      <created>1647576827623</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647576827623</updated>
+      <workItem from="1647576834406" duration="131000" />
+      <workItem from="1647576970198" duration="897000" />
+      <workItem from="1647577937989" duration="1905000" />
+      <workItem from="1647856881417" duration="3472000" />
+      <workItem from="1647929268492" duration="6691000" />
+      <workItem from="1648085376855" duration="3216000" />
+      <workItem from="1648537533453" duration="37000" />
+      <workItem from="1648537573401" duration="13865000" />
+      <workItem from="1648698356064" duration="2627000" />
+      <workItem from="1648710239972" duration="1354000" />
+      <workItem from="1648978687758" duration="72000" />
+      <workItem from="1649072629375" duration="2000000" />
+      <workItem from="1649655988856" duration="278000" />
+      <workItem from="1649656270854" duration="25000" />
+      <workItem from="1649656298161" duration="16920000" />
+      <workItem from="1649825128694" duration="13419000" />
+      <workItem from="1650006411447" duration="672000" />
+      <workItem from="1650007388146" duration="12268000" />
+      <workItem from="1650106439621" duration="866000" />
+      <workItem from="1650186697638" duration="14000" />
+      <workItem from="1650258912094" duration="6145000" />
+      <workItem from="1650355246457" duration="476000" />
+      <workItem from="1651304566192" duration="130000" />
+      <workItem from="1651304700303" duration="16805000" />
+      <workItem from="1651395740367" duration="648000" />
+      <workItem from="1651472813332" duration="809000" />
+      <workItem from="1660882824831" duration="106000" />
+      <workItem from="1660882983534" duration="401000" />
+      <workItem from="1666318390572" duration="79000" />
+      <workItem from="1666318473323" duration="6194000" />
+      <workItem from="1666532842923" duration="4166000" />
+      <workItem from="1666661431349" duration="12022000" />
+      <workItem from="1666761837872" duration="1719000" />
+      <workItem from="1667028500506" duration="5492000" />
+      <workItem from="1667122104597" duration="674000" />
+      <workItem from="1668322398357" duration="1578000" />
+      <workItem from="1669722906372" duration="2752000" />
+      <workItem from="1674698078511" duration="1191000" />
+      <workItem from="1674702209319" duration="844000" />
+      <workItem from="1674726360529" duration="96000" />
+      <workItem from="1675144957443" duration="203000" />
+      <workItem from="1676450609606" duration="1791000" />
+      <workItem from="1677122899730" duration="1065000" />
+      <workItem from="1677564422921" duration="4967000" />
+      <workItem from="1677584664593" duration="675000" />
+      <workItem from="1677649710540" duration="340000" />
+      <workItem from="1677650839314" duration="3848000" />
+      <workItem from="1677674841407" duration="1255000" />
+      <workItem from="1677687409172" duration="704000" />
+      <workItem from="1678035383444" duration="51000" />
+      <workItem from="1678953252874" duration="629000" />
+      <workItem from="1679216548185" duration="50000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="response" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

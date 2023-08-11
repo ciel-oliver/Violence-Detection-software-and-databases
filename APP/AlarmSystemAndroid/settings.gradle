@@ -1,0 +1,15 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        /*google()*/
+        maven {url 'https://maven.aliyun.com/repository/central'}
+        /*mavenCentral()*/
+        maven {url 'https://maven.aliyun.com/repository/public'}
+        maven { url 'https://jitpack.io' }
+    }
+}
+rootProject.name = "AlarmSystemAndroid"
+include ':app'
+include ':network'
+include ':base_lib'

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chxip.alarmsystem.dao.NotificationMapper">
+  <resultMap id="BaseResultMap" type="com.chxip.alarmsystem.entity.Notification">
+    <id column="notification_id" jdbcType="INTEGER" property="notificationId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="notification_title" jdbcType="VARCHAR" property="notificationTitle" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.chxip.alarmsystem.entity.Notification">
+    <result column="notification_content" jdbcType="LONGVARCHAR" property="notificationContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    notification_id, create_time, notification_title
+  </sql>
+  <sql id="Blob_Column_List">
+    notification_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_notification
+    where notification_id = #{notificationId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT * FROM t_notification
+    <where>
+      <if test="keyWord != null">
+        and (notification_title like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%')
+         OR notification_content like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%') )
+      </if>
+    </where>
+    ORDER BY create_time DESC LIMIT #{page},#{size}
+
+  </select>
+
+  <!-- 查询全部-->
+  <select id="selectAllCount" parameterType="java.util.Map" resultType ="java.lang.Integer">
+    SELECT count(notification_id) FROM t_notification
+    <where>
+      <if test="keyWord != null">
+        and (notification_title like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%')
+        OR notification_content like CONCAT('%',#{keyWord,jdbcType=VARCHAR},'%') )
+      </if>
+    </where>
+  </select>
+
+  <select id="getNewNotification" resultType ="java.lang.Integer">
+    SELECT count(notification_id) FROM t_notification
+    WHERE create_time > #{date}
+
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_notification
+    where notification_id = #{notificationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chxip.alarmsystem.entity.Notification">
+    insert into t_notification (notification_id, create_time, notification_title, 
+      notification_content)
+    values (#{notificationId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{notificationTitle,jdbcType=VARCHAR}, 
+      #{notificationContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chxip.alarmsystem.entity.Notification">
+    insert into t_notification
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="notificationId != null">
+        notification_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="notificationTitle != null">
+        notification_title,
+      </if>
+      <if test="notificationContent != null">
+        notification_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="notificationId != null">
+        #{notificationId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notificationTitle != null">
+        #{notificationTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="notificationContent != null">
+        #{notificationContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chxip.alarmsystem.entity.Notification">
+    update t_notification
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notificationTitle != null">
+        notification_title = #{notificationTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="notificationContent != null">
+        notification_content = #{notificationContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where notification_id = #{notificationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.chxip.alarmsystem.entity.Notification">
+    update t_notification
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      notification_title = #{notificationTitle,jdbcType=VARCHAR},
+      notification_content = #{notificationContent,jdbcType=LONGVARCHAR}
+    where notification_id = #{notificationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chxip.alarmsystem.entity.Notification">
+    update t_notification
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      notification_title = #{notificationTitle,jdbcType=VARCHAR}
+    where notification_id = #{notificationId,jdbcType=INTEGER}
+  </update>
+</mapper>
